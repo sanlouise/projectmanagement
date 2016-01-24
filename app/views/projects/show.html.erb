@@ -14,7 +14,10 @@
   <!--<dt><strong><%= model_class.human_attribute_name(:tenant_id) %>:</strong></dt>-->
   <!--<dd><%= @project.tenant_id %></dd>-->
 </dl>
-
+<h3>Attachments</h3>
+</br>
+</br>
+<%= render 'attachments/list', attachments: @project.attachments %>
 <%= link_to 'Back to Home - Organization', root_path, :class => 'btn btn-default' %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_tenant_project_path(project: @project, tenant: @project.tenant_id), 
