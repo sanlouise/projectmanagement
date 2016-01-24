@@ -15,6 +15,6 @@ class Project < ActiveRecord::Base
       tenant.projects
     else
       tenant.projects.order(:id).limit(1)
+    end
   end
-  
 end

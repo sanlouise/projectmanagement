@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .image.responsive.home-bg {
-  background-image: none;
+  background-image: url("meeting.jpg");
   background-size: 100%;
   background-repeat:no-repeat;
   -webkit-background-size:cover;
@@ -11,9 +11,21 @@
   -o-background-size:cover;
   background-size:cover;
   background-position:center;
+}
+
+
+
+
+.jumbotron h1 {
+  
+  color: white;
+  text-align: center;
+  padding-top: 35px;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+  font-size: 70px !important;
+  
 
 }
 
-.jumbotron.text-center.white {
-  background-color: none !important;
-}
+
