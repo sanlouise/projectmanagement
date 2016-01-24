@@ -8,13 +8,13 @@ class ConfirmationsController < Milia::ConfirmationsController
       yield resource if block_given?
 
       if resource.errors.empty?
-        log_action( "invitee confirmed" )
+        log_action( "Invitee confirmed" )
         set_flash_message(:notice, :confirmed) if is_flashing_format?
           # sign in automatically
         sign_in_tenanted_and_redirect(resource)
         
       else
-        log_action( "invitee confirmation failed" )
+        log_action( "Invitee confirmation failed" )
         respond_with_navigational(resource.errors, :status => :unprocessable_entity){ render :new }
       end
 
