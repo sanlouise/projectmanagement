@@ -1,7 +1,8 @@
 <body class ="image responsive home-bg">
   
   <% if current_user %>
-  <h3 class="pull-right">Organization: <%= @tenant.name %></h3>
+  <h3 class="text-center">Organization: <%= @tenant.name %></h3>
+  <%= render 'projects/list' %>
 
   <% else %>
   
