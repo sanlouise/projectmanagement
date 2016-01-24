@@ -2,14 +2,15 @@ class Tenant < ActiveRecord::Base
 
    acts_as_universal_and_determines_tenant
   has_many :members, dependent: :destroy
-
+  validates_uniqueness_of :name
+  validates_presence_of :name
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
-      tenant = Tenant.new(:name => tenant_params[:name])
+      tenant = Tenant.new(tenant_params)
 
       if new_signups_not_permitted?(coupon_params)
 
-        raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts not permitted at this time" 
+        raise ::Milia::Control::MaxTenantExceeded, "Sorry, new accounts are not permitted at this time" 
 
       else 
         tenant.save    # create the tenant
