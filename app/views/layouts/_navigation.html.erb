@@ -11,7 +11,7 @@
     <div class="navbar-collapse collapse navbar-responsive-collapse">
       <ul class="nav navbar-nav">
         <li>
-          <%= link_to "<i class='fa fa-users'></i> Add Members".html_safe, new_member_path, class: 'navbar-link btn btn-primary' %>
+          <%= link_to "<i class='fa fa-users'></i> Add Members".html_safe, new_member_path, class: 'navbar-link btn btn-primary btn-xs' %>
         </li>
       </ul>
       <ul class="nav navbar-right col-md-4">
@@ -23,7 +23,7 @@
           <li class="col-md-3 logout"><%= link_to('Logout', destroy_user_session_path, class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
         <% else %>
           <li class="col-md-4 pull-right">
-            <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
+            <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary btn-xs', title: 'Sign In') %>
           </li>
         <% end %>
       </ul>
