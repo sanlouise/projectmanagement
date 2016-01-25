@@ -33,7 +33,7 @@ module ApplicationHelper
   end
   
   def s3_link(tenant_id, attachment_key)
-    link_to attechment_key, "#{attachment_key}", class: "main-link", target: 'new'
+    link_to attachment_key, "#{attachment_key}", class: "main-link", target: 'new'
   end
   
   

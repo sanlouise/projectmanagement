@@ -18,13 +18,13 @@
 </br>
 </br>
 <%= render 'attachments/list', attachments: @project.attachments %>
-<%= link_to 'Back to Home - Organization', root_path, :class => 'btn btn-default' %>
+<%= link_to 'Back to Home - Organization', root_path, :class => 'btn btn-default btn-xs' %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_tenant_project_path(project: @project, tenant: @project.tenant_id), 
-              :class => 'btn btn-default' %>
+              :class => 'btn btn-default btn-xs' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               tenant_project_path(@project, @project.tenant_id),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", 
               :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+              :class => 'btn btn-danger btn-xs' %>
