@@ -15,7 +15,7 @@ class RegistrationsController < Milia::RegistrationsController
       # have a working copy of the params in case Tenant callbacks
       # make any changes
     tenant_params = sign_up_params_tenant
-    user_params   = sign_up_params_user
+    user_params   = sign_up_params_user #.merge({ is_admin: true })
     coupon_params = sign_up_params_coupon
 
     sign_out_session!
@@ -32,7 +32,7 @@ class RegistrationsController < Milia::RegistrationsController
             @payment = Payment.new({ email: user_params["email"],
               token: params[:payment]["token"],
               tenant: @tenant })
-            flash[:error] = "Please check the registration errors." unless @payment.valid?
+            flash[:error] = "Please check registration errors" unless @payment.valid?
             
             begin
               @payment.process_payment
@@ -46,7 +46,7 @@ class RegistrationsController < Milia::RegistrationsController
           end
         else
           resource.valid?
-          log_action( "tenant creation failed", @tenant )
+          log_action( "tenant create failed", @tenant )
           render :new
         end # if .. then .. else no tenant errors
         
@@ -67,7 +67,7 @@ class RegistrationsController < Milia::RegistrationsController
           end  # if..then..else for valid user creation
         else
           resource.valid?
-          log_action("Payment processing has failed.", @tenant )
+          log_action("Payment processing failed", @tenant )
           render :new and return
         end # if.. then .. else no tenant errors
       end  #  wrap tenant/user creation in a transaction
