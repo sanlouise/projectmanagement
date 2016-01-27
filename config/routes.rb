@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  
+  match '/plan/edit' => 'tenants#edit', via: :get, as: :edit_plan
+  
   resources :attachments
   resources :tenants do
     resources :projects
@@ -22,5 +24,6 @@ Rails.application.routes.draw do
     :sessions => "milia/sessions", 
     :passwords => "milia/passwords", 
   }
+
 
 end
