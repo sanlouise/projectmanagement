@@ -1,20 +1,22 @@
 <script language="JavaScript">
   Stripe.setPublishableKey("<%= ENV['STRIPE_TEST_PUBLISHABLE_KEY'] %>");
 </script>
+
+<h1 class="center"> Update Your Plan </h1>
+
 <%= form_for @tenant, url: update_plan_path, html: { class: "#{class_name_for_tenant_form(@tenant)}" } do |f| %>
-  <div class="form-group col-md-12 no-side-padding">
-    <%= f.label :name, 'Organization' %>
-    <span class='description'>(Unique name for your group or organization for the new account)</span>
+  <div class="form-group col-md-8 no-side-padding col-md-offset-2 text-center">
+    <%= f.label :name, 'Name of Group or Organization' %>
     <%= f.text_field :name, required: true, class: "form-control"  %>
   </div>
-  <div class="form-group col-md-12 no-side-padding">
+  <div class="form-group col-md-8 col-md-offset-2 no-side-padding text-center">
     <%= f.label :plan %>
     <%= f.select :plan, options_for_select(Plan.options, @tenant.plan ), {}, 
                   required: true, class: "form-control" %>
   </div>
   <% if @tenant.payment.blank? %>
     <%= fields_for( :payment ) do |p| %>
-    <div class="row col-md-12">
+    <div class="form-group col-md-8 col-md-offset-2 no-side-padding text-center">
       <div class="form-group col-md-4 no-left-padding">
         <%= p.label :card_number, "Card Number", data: { stripe: 'label' } %>
         <%= p.text_field :card_number, class: "form-control", required: true,
@@ -27,16 +29,16 @@
       </div>
       <div class="form-group col-md-6">
         <div class="col-md-12">
-          <%= p.label :card_expires, "Card Expires", data: { stripe: 'label' } %>
+          <%= p.label :card_expires, "Card Expiration Date", data: { stripe: 'label' } %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
           <%= p.select :card_expires_month,
                        options_for_select(Payment.month_options),
                        { include_blank: 'Month' },
                        "data-stripe" => "exp-month",
                        class: "form-control", required: true  %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
           <%= p.select :card_expires_year,
                        options_for_select(Payment.year_options.push),
                          { include_blank: 'Year' },
@@ -48,7 +50,7 @@
     <% end %>
   <% end %>
   <br />
-  <div class="row col-md-12">
+  <div class="row col-md-12 text-center">
     <%= f.submit 'Update Plan', class: "btn btn-primary", id: 'update_plan' %>  
   </div>  
 <% end %>

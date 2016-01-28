@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # *MUST* come *BEFORE* devise's definitions (below)
   as :user do   
     match '/user/confirmation' => 'confirmations#update', :via => :put, :as => :update_user_confirmation
+    match '/plan/update' => 'tenants#update', via: [:put, :patch], as: :update_plan
   end
 
   devise_for :users, :controllers => { 

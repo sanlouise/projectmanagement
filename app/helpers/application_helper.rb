@@ -37,7 +37,7 @@ module ApplicationHelper
   end
   
   def class_name_for_tenant_form(tenant)
-    return "cc_form" if tenant.payment.blank
+    return "cc_form" if tenant.payment.blank?
     ""
   end
   
