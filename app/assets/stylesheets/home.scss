@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .image.responsive.home-bg {
-  background-image: url("meeting.jpg");
+  background-image: url("coffee.jpg");
   background-size: 100%;
   background-repeat:no-repeat;
   -webkit-background-size:cover;
@@ -24,9 +24,10 @@
   margin-bottom: 30px;
   letter-spacing: -1px;
   font-size: 70px !important;
-  
-
 }
 
+ul {
+  list-style: none !important;
+}
 
 

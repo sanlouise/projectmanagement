@@ -9,10 +9,12 @@
   </div>
   <div class="panel-body">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { role: "form", class: 'cc_form' }) do |f| %>
+      
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
       </div>
+   
       <div class="form-group">
         <%= f.label :password %><br />
         <%= f.password_field :password, class: "form-control" %>
@@ -21,6 +23,7 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: "form-control" %>
       </div>
+      
       <%= fields_for( :tenant ) do |w| %>
         <div class="form-group col-md-6 no-left-padding">
           <%= w.label :name, 'Organization' %>
@@ -32,6 +35,7 @@
           <%= w.select :plan, options_for_select(Plan.options, params[:plan]), {}, required: true, 
           class: "form-control" %>
         </div>
+        
         <%= fields_for( :payment ) do |p| %>
           <div class="row col-md-12">
             <div class="form-group col-md-4 no-left-padding">
@@ -63,6 +67,7 @@
                              data: { stripe: "exp-year"}, required: true  %>
               </div>
             </div>
+
           </div>
         <% end %>
       <% end %>
